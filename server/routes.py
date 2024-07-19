@@ -1,22 +1,23 @@
-from flask import Flask, request, jsonify # type: ignore
-import psycopg2 # type: ignore
+from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash # type: ignore
-from dotenv import load_dotenv # type: ignore
-import os
+from dbconfig import get_db_connection
 
-app = Flask(__name__)
+main = Blueprint('main', __name__)
 
-# Database connection
-def get_db_connection():
-    conn = psycopg2.connect(
-        host=os.getenv("DB_HOST"),
-        database=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD")
-    )
-    return conn
+#register
+#login
+#upload book
+#get books
+#delete book
+#update book
+#download book
+#search book
 
-@app.route('/register', methods=['POST'])
+@main.route('/')
+def home():
+    return 'Hello World'
+
+@main.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
     username = data['username']
@@ -31,7 +32,7 @@ def register():
     conn.close()
     return jsonify({'message': 'User registered successfully'}), 201
 
-@app.route('/login', methods=['POST'])
+@main.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     username = data['username']
@@ -48,7 +49,7 @@ def login():
         return jsonify({'message': 'Login successful'}), 200
     return jsonify({'message': 'Invalid credentials'}), 401
 
-@app.route('/upload', methods=['POST'])
+@main.route('/upload', methods=['POST'])
 def upload():
     data = request.get_json()
     user_id = data['user_id']
@@ -63,7 +64,7 @@ def upload():
     conn.close()
     return jsonify({'message': 'Book uploaded successfully'}), 201
 
-@app.route('/books', methods=['GET'])
+@main.route('/books', methods=['GET'])
 def get_books():
     user_id = request.args.get('user_id')
 
@@ -75,6 +76,3 @@ def get_books():
     conn.close()
 
     return jsonify(books), 200
-
-if __name__ == '__main__':
-    app.run(debug=True)
