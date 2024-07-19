@@ -15,7 +15,7 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def home():
-    return 'Hello World'
+    return 'This is the home route!'
 
 @main.route('/register', methods=['POST'])
 def register():
