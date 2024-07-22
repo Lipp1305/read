@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import theme from "../themes";
 
@@ -18,6 +18,7 @@ export default function MenuAppBar() {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Books
                 </Typography>
+                <Button color="inherit">Login</Button>
             </Toolbar>
         </AppBar>
     )
