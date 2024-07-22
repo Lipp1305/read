@@ -1,9 +1,10 @@
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import theme from "../themes";
 
 export default function MenuAppBar() {
     return (
-        <AppBar position="static">
+        <AppBar position="fixed" theme={theme}>
             <Toolbar>
                 <IconButton
                     size="large"
