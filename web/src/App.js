@@ -1,12 +1,9 @@
-import { Box } from '@mui/material';
-import CollectionsDrawer from './components/CollectionsDrawer';
-import MenuAppBar from './components/MenuAppBar';
-
+import MainPage from "./components/MainPage";
 
 function App() {
   return (
     <>
-      <MenuAppBar />
+      <MainPage />
     </>
   );
 }
