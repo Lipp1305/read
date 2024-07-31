@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 
 function MenuBar() {
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Read.
