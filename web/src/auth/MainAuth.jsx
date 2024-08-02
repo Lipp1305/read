@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Typography, Grid, Paper, TextField, Button, Link } from "@mui/material";
 import { useTheme } from "@emotion/react";
+import { signUp, signIn } from "firebase/auth";
 
 function MainAuth() {
 
@@ -8,6 +9,8 @@ function MainAuth() {
 
     const [firstTime, setFirstTime] = useState(false);
 
+    
+    
 
 
     return (
@@ -31,9 +34,28 @@ function MainAuth() {
                     <Paper elevation={3} style={{ padding: '2rem' }}>
                         <Typography variant="h4" gutterBottom>Sign Up</Typography>
                         <form>
-                            <TextField label="Username" fullWidth margin="normal" variant="outlined" />
-                            <TextField label="Password" type="password" fullWidth margin="normal" variant="outlined" />
-                            <Button type="submit" fullWidth variant="contained" color="primary" style={{ marginTop: '1rem' }}>Sign Up</Button>
+                            <TextField 
+                                label="Email" 
+                                fullWidth 
+                                margin="normal" 
+                                variant="outlined" 
+                            />
+                            <TextField 
+                                label="Password" 
+                                type="password" 
+                                fullWidth 
+                                margin="normal" 
+                                variant="outlined" 
+                            />
+                            <Button 
+                                type="submit" 
+                                fullWidth 
+                                variant="contained" 
+                                color="primary" 
+                                style={{ marginTop: '1rem' }}
+                            >
+                            Sign Up
+                            </Button>
                         </form>
                     </Paper>
                     <Grid item xs={12} sx={{ marginTop: '1rem' }}>
@@ -46,67 +68,71 @@ function MainAuth() {
 
                         <Typography variant="body" sx={{ color: "white" }}>
                         Have an account already?{" "}
-                        <Link
-                        component={Button}
-                        variant="body1"
-                        href="#"
-                        style={{ color: "white" }}
-                        onClick={() => setFirstTime(false)}
-                        >Log In</Link>
+                            <Link
+                                component={Button}
+                                variant="body1"
+                                href="#"
+                                style={{ color: "white" }}
+                                onClick={() => setFirstTime(false)}
+                            >
+                                Log In
+                            </Link>
                         </Typography>
                     </Grid>
                     </>
                 ) : (
-                <>
-                <Paper elevation={3} style={{ padding: '2rem' }}>
-                    <Typography variant="h4" gutterBottom>
-                    Login
-                    </Typography>
-                    <form>
-                    <TextField
-                        label="Username"
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                    />
-                    <TextField
-                        label="Password"
-                        type="password"
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        style={{ marginTop: '1rem' }}
-                    >
+                    <>
+                    <Paper elevation={3} style={{ padding: '2rem' }}>
+                        <Typography variant="h4" gutterBottom>
                         Login
-                    </Button>
-                    </form>
-                </Paper>
-                <Grid item xs={12} sx={{ marginTop: '1rem' }}>
-                    {/* 
-                    <Typography variant="body" sx={{ color: "white" }}>
-                    Forgot your password?{" "}
-                    </Typography>
-                    */}
+                        </Typography>
+                        <form>
+                        <TextField
+                            label="Email"
+                            fullWidth
+                            margin="normal"
+                            variant="outlined"
+                        />
+                        <TextField
+                            label="Password"
+                            type="password"
+                            fullWidth
+                            margin="normal"
+                            variant="outlined"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            style={{ marginTop: '1rem' }}
+                        >
+                            Login
+                        </Button>
+                        </form>
+                    </Paper>
+                    <Grid item xs={12} sx={{ marginTop: '1rem' }}>
+                        {/* 
+                        <Typography variant="body" sx={{ color: "white" }}>
+                        Forgot your password?{" "}
+                        </Typography>
+                        */}
 
 
-                    <Typography variant="body" sx={{ color: "white" }}>
-                    Don't have an account?{" "}
-                    <Link
-                    component={Button}
-                    variant="body1"
-                    href="#"
-                    style={{ color: "white" }}
-                    onClick={() => setFirstTime(true)}
-                    >Get Started</Link>
-                    </Typography>
-                </Grid>
-                </>
+                        <Typography variant="body" sx={{ color: "white" }}>
+                        Don't have an account?{" "}
+                            <Link
+                                component={Button}
+                                variant="body1"
+                                href="#"
+                                style={{ color: "white" }}
+                                onClick={() => setFirstTime(true)}
+                            >
+                                Get Started
+                            </Link>
+                        </Typography>
+                    </Grid>
+                    </>
 
                 )
                 }
